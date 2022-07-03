@@ -20,17 +20,17 @@ Other Style Guides
 
 ## Table of Contents
 
-  1. [Types](#types)
-  1. [References](#references)
-  1. [Objects](#objects)
-  1. [Arrays](#arrays)
-  1. [Destructuring](#destructuring)
-  1. [Strings](#strings)
-  1. [Functions](#functions)
-  1. [Arrow Functions](#arrow-functions)
-  1. [Classes & Constructors](#classes--constructors)
-  1. [Modules](#modules)
-  1. [Iterators and Generators](#iterators-and-generators)
+  1. [Types](#types) 类型
+  1. [References](#references) 引用
+  1. [Objects](#objects) 对象
+  1. [Arrays](#arrays) 阵列
+  1. [Destructuring](#destructuring) 
+  1. [Strings](#strings) 字符串
+  1. [Functions](#functions) 函数
+  1. [Arrow Functions](#arrow-functions) 箭头函数
+  1. [Classes & Constructors](#classes--constructors) 类与构造器
+  1. [Modules](#modules) 模块化
+  1. [Iterators and Generators](#iterators-and-generators) 
   1. [Properties](#properties)
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
@@ -63,15 +63,15 @@ Other Style Guides
 ## Types
 
   <a name="types--primitives"></a><a name="1.1"></a>
-  - [1.1](#types--primitives) **Primitives**: When you access a primitive type you work directly on its value.
+  - [1.1](#types--primitives) **Primitives**: When you access a primitive type you work directly on its value. 访问JS的基本数据类型，直接作用于它的值
 
-    - `string`
-    - `number`
-    - `boolean`
-    - `null`
-    - `undefined`
+    - `string` 字符串
+    - `number` 数字
+    - `boolean` 布尔运算
+    - `null` 空
+    - `undefined` 未定义
     - `symbol`
-    - `bigint`
+    - `bigint` 内置对象，提供一种方法表示大于`2^53 - 1`的整数。这原本是JS中能够用`number`表示的最大数字，`BigInt`可以表示任意大的整数
 
     ```javascript
     const foo = 1;
@@ -87,14 +87,14 @@ Other Style Guides
   <a name="types--complex"></a><a name="1.2"></a>
   - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.
 
-    - `object`
-    - `array`
-    - `function`
+    - `object` 对象
+    - `array` 数组
+    - `function` 函数
 
     ```javascript
     const foo = [1, 2];
     const bar = foo;
-
+    
     bar[0] = 9;
 
     console.log(foo[0], bar[0]); // => 9, 9
@@ -110,11 +110,11 @@ Other Style Guides
     > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     var a = 1;
     var b = 2;
 
-    // good
+    // good👍👍👍
     const a = 1;
     const b = 2;
     ```
@@ -125,7 +125,7 @@ Other Style Guides
     > Why? `let` is block-scoped rather than function-scoped like `var`.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     var count = 1;
     if (true) {
       count += 1;
@@ -160,13 +160,13 @@ Other Style Guides
 ## Objects
 
   <a name="objects--no-new"></a><a name="3.1"></a>
-  - [3.1](#objects--no-new) Use the literal syntax for object creation. eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
+  - [3.1](#objects--no-new) Use the literal syntax for object creation创建对象的文本语法. eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const item = new Object();
 
-    // good
+    // good👍👍👍
     const item = {};
     ```
 
@@ -174,6 +174,7 @@ Other Style Guides
   - [3.2](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
 
     > Why? They allow you to define all the properties of an object in one place.
+    在一个地方定义对象的所有属性
 
     ```javascript
 
@@ -181,14 +182,14 @@ Other Style Guides
       return `a key named ${k}`;
     }
 
-    // bad
+    // bad👎👎👎
     const obj = {
       id: 5,
       name: 'San Francisco',
     };
     obj[getKey('enabled')] = true;
 
-    // good
+    // good👍👍👍
     const obj = {
       id: 5,
       name: 'San Francisco',
@@ -197,10 +198,34 @@ Other Style Guides
     ```
 
   <a name="es6-object-shorthand"></a><a name="3.5"></a>
-  - [3.3](#es6-object-shorthand) Use object method shorthand. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
+  - [3.3](#es6-object-shorthand) Use object method shorthand.对象方法速记ECMAScript6 简洁的定义对象文本方式和属性的简洁形式 eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
 
     ```javascript
-    // bad
+    // 不简洁写法！ES5 syntax👇
+    // Properties
+    var foo = {
+      x = x,
+      y = y,
+      z = z,
+    };
+    // Methods
+    var foo = {
+      a: function(){},
+      b: function(){}
+    };
+    
+    // 简洁写法，ES6 syntax👇
+    // Properties
+    var foo = {x, y, z};
+    // methods
+    var foo = {
+    a() {},
+    b() {}
+    };
+    
+    //--------------------
+    
+    // bad👎👎👎
     const atom = {
       value: 1,
 
@@ -209,7 +234,7 @@ Other Style Guides
       },
     };
 
-    // good
+    // good👍👍👍
     const atom = {
       value: 1,
 
@@ -220,52 +245,53 @@ Other Style Guides
     ```
 
   <a name="es6-object-concise"></a><a name="3.6"></a>
-  - [3.4](#es6-object-concise) Use property value shorthand. eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
+  - [3.4](#es6-object-concise) Use property value shorthand.属性值简写 eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand)
 
-    > Why? It is shorter and descriptive.
+    > Why? It is shorter and descriptive.更短且具有描述性
 
     ```javascript
-    const lukeSkywalker = 'Luke Skywalker';
+    const dreamShake = 'Dream Shake';
 
-    // bad
+    // bad👎👎👎
     const obj = {
-      lukeSkywalker: lukeSkywalker,
+      dreamShake: dreamShake,
     };
 
-    // good
+    // good👍👍👍
     const obj = {
-      lukeSkywalker,
+      dreamShake,
     };
     ```
 
   <a name="objects--grouped-shorthand"></a><a name="3.7"></a>
-  - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration.
+  - [3.5](#objects--grouped-shorthand) Group your shorthand properties at the beginning of your object declaration. 编组简写属性，在对象声明前
 
-    > Why? It’s easier to tell which properties are using the shorthand.
+    > Why? It’s easier to tell which properties are using the shorthand. 哪个属性在使用简写
 
     ```javascript
-    const anakinSkywalker = 'Anakin Skywalker';
-    const lukeSkywalker = 'Luke Skywalker';
+    const chrisBosh = 'Chris Bosh';
+    const chrisWebber = 'Chris Webber';
 
-    // bad
+    // bad👎👎👎
     const obj = {
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
-      lukeSkywalker,
+      chrisBosh,
       episodeThree: 3,
       mayTheFourth: 4,
-      anakinSkywalker,
+      chrisWebber,
     };
 
-    // good
+    // good👍👍👍
     const obj = {
-      lukeSkywalker,
-      anakinSkywalker,
+      chrisBosh,
+      chrisWebber,
       episodeOne: 1,
       twoJediWalkIntoACantina: 2,
       episodeThree: 3,
       mayTheFourth: 4,
     };
+    //even tho i still cannot tell why the good is good, the bad is bad
     ```
 
   <a name="objects--quoted-props"></a><a name="3.8"></a>
