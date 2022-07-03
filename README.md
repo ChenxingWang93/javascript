@@ -30,35 +30,35 @@ Other Style Guides
   1. [Arrow Functions](#arrow-functions) 箭头函数
   1. [Classes & Constructors](#classes--constructors) 类与构造器
   1. [Modules](#modules) 模块化
-  1. [Iterators and Generators](#iterators-and-generators) 
-  1. [Properties](#properties)
-  1. [Variables](#variables)
-  1. [Hoisting](#hoisting)
-  1. [Comparison Operators & Equality](#comparison-operators--equality)
-  1. [Blocks](#blocks)
-  1. [Control Statements](#control-statements)
-  1. [Comments](#comments)
-  1. [Whitespace](#whitespace)
-  1. [Commas](#commas)
-  1. [Semicolons](#semicolons)
-  1. [Type Casting & Coercion](#type-casting--coercion)
-  1. [Naming Conventions](#naming-conventions)
-  1. [Accessors](#accessors)
-  1. [Events](#events)
-  1. [jQuery](#jquery)
+  1. [Iterators and Generators](#iterators-and-generators) 迭代器与生成器
+  1. [Properties](#properties) 属性
+  1. [Variables](#variables) 变量
+  1. [Hoisting](#hoisting) 吊装
+  1. [Comparison Operators & Equality](#comparison-operators--equality) 比较运算符与等式
+  1. [Blocks](#blocks) 块
+  1. [Control Statements](#control-statements) 控制声明
+  1. [Comments](#comments) 注释
+  1. [Whitespace](#whitespace) 空白
+  1. [Commas](#commas) 逗号
+  1. [Semicolons](#semicolons) 分号
+  1. [Type Casting & Coercion](#type-casting--coercion) 类型转换与强制
+  1. [Naming Conventions](#naming-conventions) 命名约定
+  1. [Accessors](#accessors) 访问器
+  1. [Events](#events) 事件
+  1. [jQuery](#jquery) jQuery
   1. [ECMAScript 5 Compatibility](#ecmascript-5-compatibility)
   1. [ECMAScript 6+ (ES 2015+) Styles](#ecmascript-6-es-2015-styles)
-  1. [Standard Library](#standard-library)
-  1. [Testing](#testing)
-  1. [Performance](#performance)
-  1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
+  1. [Standard Library](#standard-library) 标准库
+  1. [Testing](#testing) 测试
+  1. [Performance](#performance) 表现
+  1. [Resources](#resources) 资源
+  1. [In the Wild](#in-the-wild) 
   1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About JavaScript](#chat-with-us-about-javascript)
-  1. [Contributors](#contributors)
-  1. [License](#license)
-  1. [Amendments](#amendments)
+  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide) JS Style Guide
+  1. [Chat With Us About JavaScript](#chat-with-us-about-javascript) 跟我们聊一聊🤞🏼JS
+  1. [Contributors](#contributors) 贡献者
+  1. [License](#license) 执照🪪
+  1. [Amendments](#amendments) 修正
 
 ## Types
 
@@ -295,19 +295,19 @@ Other Style Guides
     ```
 
   <a name="objects--quoted-props"></a><a name="3.8"></a>
-  - [3.6](#objects--quoted-props) Only quote properties that are invalid identifiers. eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props)
+  - [3.6](#objects--quoted-props) Only quote properties that are invalid identifiers.只有引用属性是无效的标识符 eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props)
 
-    > Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
+    > Why? In general we consider it subjectively easier to read.通常,我们主观地认为这样更可读 It improves syntax highlighting, and is also more easily optimized by many JS engines.改进了语法的突出显示，并且更容易被许多js引擎优化
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const bad = {
-      'foo': 3,
-      'bar': 4,
+      'foo': 3,//不要 quote属性
+      'bar': 4,//不要 quote属性
       'data-blah': 5,
     };
 
-    // good
+    // good👍👍👍
     const good = {
       foo: 3,
       bar: 4,
@@ -664,10 +664,10 @@ Other Style Guides
     > Why? Backslashes harm readability, thus they should only be present when necessary.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const foo = '\'this\' \i\s \"quoted\"';
 
-    // good
+    // good👍👍👍
     const foo = '\'this\' is "quoted"';
     const foo = `my name is '${name}'`;
     ```
@@ -682,17 +682,17 @@ Other Style Guides
     > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function foo() {
       // ...
     }
 
-    // bad
+    // bad👎👎👎
     const foo = function () {
       // ...
     };
 
-    // good
+    // good👍👍👍
     // lexical name distinguished from the variable-referenced invocation(s)
     const short = function longUniqueMoreDescriptiveLexicalFoo() {
       // ...
@@ -718,14 +718,14 @@ Other Style Guides
   - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     if (currentUser) {
       function test() {
         console.log('Nope.');
       }
     }
 
-    // good
+    // good👍👍👍
     let test;
     if (currentUser) {
       test = () => {
@@ -738,12 +738,12 @@ Other Style Guides
   - [7.5](#functions--arguments-shadow) Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function foo(name, options, arguments) {
       // ...
     }
 
-    // good
+    // good👍👍👍
     function foo(name, options, args) {
       // ...
     }
@@ -755,32 +755,32 @@ Other Style Guides
     > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function concatenateAll() {
       const args = Array.prototype.slice.call(arguments);
       return args.join('');
     }
 
-    // good
+    // good👍👍👍
     function concatenateAll(...args) {
       return args.join('');
     }
     ```
 
   <a name="es6-default-parameters"></a><a name="7.7"></a>
-  - [7.7](#es6-default-parameters) Use default parameter syntax rather than mutating function arguments.
+  - [7.7](#es6-default-parameters) Use default parameter syntax使用默认参数语法 rather than mutating function arguments.而不是修改函数的参数
 
     ```javascript
-    // really bad
+    // really bad👎👎👎
     function handleThings(opts) {
-      // No! We shouldn’t mutate function arguments.
-      // Double bad: if opts is falsy it'll be set to an object which may
+      // No! We shouldn’t mutate function arguments.不要!!变异函数的(参数)
+      // Double bad: if opts is falsy it'll be set to an object which may 如果opts是false
       // be what you want but it can introduce subtle bugs.
       opts = opts || {};
       // ...
     }
 
-    // still bad
+    // still bad👎👎👎👎
     function handleThings(opts) {
       if (opts === void 0) {
         opts = {};
@@ -788,20 +788,20 @@ Other Style Guides
       // ...
     }
 
-    // good
+    // good👍👍👍
     function handleThings(opts = {}) {
       // ...
     }
     ```
 
   <a name="functions--default-side-effects"></a><a name="7.8"></a>
-  - [7.8](#functions--default-side-effects) Avoid side effects with default parameters.
+  - [7.8](#functions--default-side-effects) Avoid side effects with default parameters.避免默认参数所带来的副作用
 
-    > Why? They are confusing to reason about.
+    > Why? They are confusing to reason about.令人困惑的推理
 
     ```javascript
     var b = 1;
-    // bad
+    // bad👎👎👎
     function count(a = b++) {
       console.log(a);
     }
@@ -812,61 +812,61 @@ Other Style Guides
     ```
 
   <a name="functions--defaults-last"></a><a name="7.9"></a>
-  - [7.9](#functions--defaults-last) Always put default parameters last. eslint: [`default-param-last`](https://eslint.org/docs/rules/default-param-last)
+  - [7.9](#functions--defaults-last) Always put default parameters last.永远把默认的参数放在最后 eslint: [`default-param-last`](https://eslint.org/docs/rules/default-param-last)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function handleThings(opts = {}, name) {
       // ...
     }
 
-    // good
+    // good👍👍👍
     function handleThings(name, opts = {}) {
       // ...
     }
     ```
 
   <a name="functions--constructor"></a><a name="7.10"></a>
-  - [7.10](#functions--constructor) Never use the Function constructor to create a new function. eslint: [`no-new-func`](https://eslint.org/docs/rules/no-new-func)
+  - [7.10](#functions--constructor) Never use the Function constructor to create a new function.不要用函数构造器来创建函数 eslint: [`no-new-func`](https://eslint.org/docs/rules/no-new-func)
 
-    > Why? Creating a function in this way evaluates a string similarly to `eval()`, which opens vulnerabilities.
+    > Why? Creating a function in this way evaluates a string以这种创建函数计算字符串的方式 similarly to `eval()`,类似 which opens vulnerabilities.开放漏洞
 
     ```javascript
-    // bad
+    // bad👎👎👎
     var add = new Function('a', 'b', 'return a + b');
 
-    // still bad
+    // still bad👎👎👎👎
     var subtract = Function('a', 'b', 'return a - b');
     ```
 
   <a name="functions--signature-spacing"></a><a name="7.11"></a>
-  - [7.11](#functions--signature-spacing) Spacing in a function signature. eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
+  - [7.11](#functions--signature-spacing) Spacing in a function signature.函数签名留白: 函数名 () {} eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
 
-    > Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
+    > Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.保持一致性很重要，去掉函数名的同时不应该去掉或者添加 🈳️格
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const f = function(){};
     const g = function (){};
     const h = function() {};
 
-    // good
+    // good👍👍👍
     const x = function () {};
     const y = function a() {};
     ```
 
   <a name="functions--mutate-params"></a><a name="7.12"></a>
-  - [7.12](#functions--mutate-params) Never mutate parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
+  - [7.12](#functions--mutate-params) Never mutate parameters.不要变异参数 eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
 
-    > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
+    > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller. 操作传入的作为参数的对象会导致原始调用者中不必要的副作用
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function f1(obj) {
       obj.key = 1;
     }
 
-    // good
+    // good👍👍👍
     function f2(obj) {
       const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
     }
