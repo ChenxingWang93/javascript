@@ -1,8 +1,8 @@
 # Airbnb React/JSX Style Guide
 
-*A mostly reasonable approach to React and JSX*
+*A mostly reasonable approach to React and JSX* 一个大多合理的方法
 
-This style guide is mostly based on the standards that are currently prevalent in JavaScript, although some conventions (i.e async/await or static class fields) may still be included or prohibited on a case-by-case basis. Currently, anything prior to stage 3 is not included nor recommended in this guide.
+This style guide is mostly based on the standards that are currently prevalent in JavaScript,此风格指导大多基于当前普遍流行的JS标准 although some conventions 虽然一些约定俗称(异步/等待⌛️或者静态类的域)可能仍然被包含/或者禁止在一些特定的case (i.e async/await or static class fields) may still be included or prohibited on a case-by-case basis. Currently, anything prior to stage 3 is not included nor recommended in this guide.
 
 ## Table of Contents
 
