@@ -70,7 +70,7 @@ Other Style Guides
     - `boolean` 布尔运算
     - `null` 空
     - `undefined` 未定义
-    - `symbol`
+    - `symbol` 一种基本数据类型primitive data type静态属性和静态方法，是不完整的构造函数，不支持"new Symbol()"
     - `bigint` 内置对象，提供一种方法表示大于`2^53 - 1`的整数。这原本是JS中能够用`number`表示的最大数字，`BigInt`可以表示任意大的整数
 
     ```javascript
@@ -139,10 +139,10 @@ Other Style Guides
     ```
 
   <a name="references--block-scope"></a><a name="2.3"></a>
-  - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped, whereas `var` is function-scoped.
+  - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped,区块范围 whereas `var` is function-scoped.函数范围
 
     ```javascript
-    // const and let only exist in the blocks they are defined in.
+    // const and let only exist in the blocks they are defined in. const & let只存在定义的blocks中
     {
       let a = 1;
       const b = 1;
@@ -153,11 +153,11 @@ Other Style Guides
     console.log(c); // Prints 1
     ```
 
-    In the above code, you can see that referencing `a` and `b` will produce a ReferenceError, while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
+    In the above code, you can see that referencing `a` and `b` will produce a ReferenceError,参照错误 while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
 
 **[⬆ back to top](#table-of-contents)**
 
-## Objects
+## Objects对象
 
   <a name="objects--no-new"></a><a name="3.1"></a>
   - [3.1](#objects--no-new) Use the literal syntax for object creation创建对象的文本语法. eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object)
@@ -171,7 +171,7 @@ Other Style Guides
     ```
 
   <a name="es6-computed-properties"></a><a name="3.4"></a>
-  - [3.2](#es6-computed-properties) Use computed property names when creating objects with dynamic property names.
+  - [3.2](#es6-computed-properties) Use computed property names使用计算的属性名 when creating objects with dynamic property names.用动态属性名称创建对象
 
     > Why? They allow you to define all the properties of an object in one place.
     在一个地方定义对象的所有属性
@@ -858,7 +858,7 @@ Other Style Guides
   <a name="functions--mutate-params"></a><a name="7.12"></a>
   - [7.12](#functions--mutate-params) Never mutate parameters.不要变异参数 eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
 
-    > Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller. 操作传入的作为参数的对象会导致原始调用者中不必要的副作用
+    > Why? Manipulating objects passed in as parameters 操作作为参数的对象 can cause unwanted variable side effects 会导致不必要的变量副作用 in the original caller. 
 
     ```javascript
     // bad👎👎👎
@@ -873,12 +873,12 @@ Other Style Guides
     ```
 
   <a name="functions--reassign-params"></a><a name="7.13"></a>
-  - [7.13](#functions--reassign-params) Never reassign parameters. eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
+  - [7.13](#functions--reassign-params) Never reassign parameters.重新赋予参数 eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign)
 
-    > Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
+    > Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object.访问参数对象 It can also cause optimization issues, especially in V8.在V8引擎中造成一些优化问题
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function f1(a) {
       a = 1;
       // ...
@@ -889,7 +889,7 @@ Other Style Guides
       // ...
     }
 
-    // good
+    // good👍👍👍
     function f3(a) {
       const b = a || 1;
       // ...
@@ -901,23 +901,23 @@ Other Style Guides
     ```
 
   <a name="functions--spread-vs-apply"></a><a name="7.14"></a>
-  - [7.14](#functions--spread-vs-apply) Prefer the use of the spread syntax `...` to call variadic functions. eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
+  - [7.14](#functions--spread-vs-apply) Prefer the use of the spread syntax `...` to call variadic functions.可变参数函数 eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
 
-    > Why? It’s cleaner, you don’t need to supply a context, and you can not easily compose `new` with `apply`.
+    > Why? It’s cleaner,更干净 you don’t need to supply a context,无须提供上下文 and you can not easily compose `new` with `apply`.
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const x = [1, 2, 3, 4, 5];
     console.log.apply(console, x);
 
-    // good
+    // good👍👍👍
     const x = [1, 2, 3, 4, 5];
     console.log(...x);
 
-    // bad
+    // bad👎👎👎
     new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
 
-    // good
+    // good👍👍👍
     new Date(...[2016, 8, 5]);
     ```
 
