@@ -85,7 +85,7 @@ Other Style Guides
     - Symbols and BigInts cannot be faithfully polyfilled, so they should not be used when targeting browsers/environments that don’t support them natively.
 
   <a name="types--complex"></a><a name="1.2"></a>
-  - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.
+  - [1.2](#types--complex)  **Complex**: When you access a complex type you work on a reference to its value.访问复杂类型时，您可以处理对其值的引用
 
     - `object` 对象
     - `array` 数组
