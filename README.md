@@ -107,7 +107,7 @@ Other Style Guides
   <a name="references--prefer-const"></a><a name="2.1"></a>
   - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
 
-    > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
+    > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code. 对于不会重新赋值的引用
 
     ```javascript
     // bad👎👎👎
