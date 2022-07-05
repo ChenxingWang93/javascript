@@ -22,8 +22,8 @@ Other Style Guides
 
   1. [Types](#types) 类型
   1. [References](#references) 引用
-  1. [Objects](#objects) 
-  1. [Arrays](#arrays) 
+  1. [Objects](#objects) 对象
+  1. [Arrays](#arrays) 数组
   1. [Destructuring](#destructuring) 
   1. [Strings](#strings) 字符串
   1. [Functions](#functions) 函数
@@ -674,10 +674,10 @@ Other Style Guides
 
 **[⬆ back to top](#table-of-contents)**
 
-## Functions
+## Functions 函数
 
   <a name="functions--declarations"></a><a name="7.1"></a>
-  - [7.1](#functions--declarations) Use named function expressions instead of function declarations. eslint: [`func-style`](https://eslint.org/docs/rules/func-style)
+  - [7.1](#functions--declarations) Use named function expressions instead of function declarations.使用命名的函数表达式而不是简单的函数声明 eslint: [`func-style`](https://eslint.org/docs/rules/func-style)
 
     > Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
 
@@ -700,9 +700,9 @@ Other Style Guides
     ```
 
   <a name="functions--iife"></a><a name="7.2"></a>
-  - [7.2](#functions--iife) Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife)
+  - [7.2](#functions--iife) Wrap immediately invoked function expressions in parentheses.把调用的函数表达式用{}包裹起来 eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife)
 
-    > Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
+    > Why? An immediately invoked function expression is a single unit 调用的函数表达式是一个单一组 - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.在模块化到处都有的地方，几乎不需要IIFE
 
     ```javascript
     // immediately-invoked function expression (IIFE)
@@ -712,10 +712,10 @@ Other Style Guides
     ```
 
   <a name="functions--in-blocks"></a><a name="7.3"></a>
-  - [7.3](#functions--in-blocks) Never declare a function in a non-function block (`if`, `while`, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func)
+  - [7.3](#functions--in-blocks) Never declare a function in a non-function block永远不要在非函数块中声明一个函数 (`if`, `while`, etc). Assign the function to a variable instead.把函数赋给一个变量 Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.浏览器会允许你这样做，但是他们则会有不一样的解释，虽然这很不好 eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func)
 
   <a name="functions--note-on-blocks"></a><a name="7.4"></a>
-  - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.
+  - [7.4](#functions--note-on-blocks) **Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.一个函数的声明并不是语句
 
     ```javascript
     // bad👎👎👎
@@ -735,7 +735,7 @@ Other Style Guides
     ```
 
   <a name="functions--arguments-shadow"></a><a name="7.5"></a>
-  - [7.5](#functions--arguments-shadow) Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+  - [7.5](#functions--arguments-shadow) Never name a parameter `arguments`.永远不要用`arguments`命名一个参数 This will take precedence over the `arguments` object that is given to every function scope. 这会优先于给到每个函数的范围
 
     ```javascript
     // bad👎👎👎
@@ -750,9 +750,9 @@ Other Style Guides
     ```
 
   <a name="es6-rest"></a><a name="7.6"></a>
-  - [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
+  - [7.6](#es6-rest) Never use `arguments`, opt to use rest syntax `...` instead.永远不要使用`arguments`，选择使用reset语法 eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
 
-    > Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
+    > Why? `...` is explicit about which arguments you want pulled.`...`将明确哪一个要拉取的参数 Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.重设参数是一个真实的数组，而不是像数组的实际`arguments`
 
     ```javascript
     // bad👎👎👎
@@ -903,7 +903,7 @@ Other Style Guides
   <a name="functions--spread-vs-apply"></a><a name="7.14"></a>
   - [7.14](#functions--spread-vs-apply) Prefer the use of the spread syntax `...` to call variadic functions.可变参数函数 eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
 
-    > Why? It’s cleaner,更干净 you don’t need to supply a context,无须提供上下文 and you can not easily compose `new` with `apply`.
+    > Why? It’s cleaner,更干净 you don’t need to supply a context,无须提供上下文 and you can not easily compose `new` with `apply`.你不能简单地组合`new` with `apply`
 
     ```javascript
     // bad👎👎👎
@@ -922,7 +922,7 @@ Other Style Guides
     ```
 
   <a name="functions--signature-invocation-indentation"></a>
-  - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations,或者调用 should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+  - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations,带有多行签名的函数或者调用函数 should be indented just like every other multiline list in this guide应该像其他多行列表一样缩进: with each item on a line by itself,每一件物品单独只占一行 with a trailing comma on the last item.并在最后一项后用尾随逗号 eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
 
     ```javascript
     // bad👎👎👎
@@ -956,23 +956,24 @@ Other Style Guides
 
 **[⬆ back to top](#table-of-contents)**
 
-## Arrow Functions
+## Arrow Functions箭头➡️函数
 
   <a name="arrows--use-them"></a><a name="8.1"></a>
-  - [8.1](#arrows--use-them) When you must use an anonymous function (as when passing an inline callback), use arrow function notation. eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
+  - [8.1](#arrows--use-them) When you must use an anonymous function (as when passing an inline callback),当你一定要使用一个匿名函数就像传递内联回调一样 use arrow function notation.使用箭头函数作为标注 eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing)
 
     > Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
+    创建了一个函数的版本，执行`this`的语境，通常情况下是你想要的，而且是一个更简洁的句法
 
-    > Why not? If you have a fairly complicated function, you might move that logic out into its own named function expression.
+    > Why not? If you have a fairly complicated function, you might move that logic out into its own named function expression.如果你有一个很复杂的函数，你可能     需要把逻辑移动出来到它自命名的函数表达式
 
     ```javascript
-    // bad
+    // bad👎👎👎
     [1, 2, 3].map(function (x) {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -980,32 +981,32 @@ Other Style Guides
     ```
 
   <a name="arrows--implicit-return"></a><a name="8.2"></a>
-  - [8.2](#arrows--implicit-return) If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
+  - [8.2](#arrows--implicit-return) If the function body consists of a single statement returning an [expression]如果函数的主体由一个单一的声明回传一个表达式组成而没有副作用(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. 省略大括号使用隐式返回，否则，保留大括号使用`return`语句eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style)
 
-    > Why? Syntactic sugar. It reads well when multiple functions are chained together.
+    > Why? Syntactic sugar.Syntactic sugar是一种一种句法设计来让编程语言更可读更易表达 It reads well when multiple functions are chained together.尤其是当多个函数链接🔗在一起
 
     ```javascript
-    // bad
+    // bad👎👎👎
     [1, 2, 3].map((number) => {
       const nextNumber = number + 1;
       `A string containing the ${nextNumber}.`;
     });
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((number) => `A string containing the ${number + 1}.`);
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((number) => {
       const nextNumber = number + 1;
       return `A string containing the ${nextNumber}.`;
     });
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((number, index) => ({
       [index]: number,
     }));
 
-    // No implicit return with side effects
+    // No implicit return with side effects 不含蓄回传没有副作用
     function foo(callback) {
       const val = callback();
       if (val === true) {
@@ -1015,29 +1016,29 @@ Other Style Guides
 
     let bool = false;
 
-    // bad
+    // bad👎👎👎
     foo(() => bool = true);
 
-    // good
+    // good👍👍👍
     foo(() => {
       bool = true;
     });
     ```
 
   <a name="arrows--paren-wrap"></a><a name="8.3"></a>
-  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+  - [8.3](#arrows--paren-wrap) In case the expression spans over multiple lines, wrap it in parentheses for better readability.如果表达式跨越多行，请将其括在括号中以提高可读性
 
-    > Why? It shows clearly where the function starts and ends.
+    > Why? It shows clearly where the function starts and ends.清晰展现函数从哪里开始在哪里结束
 
     ```javascript
-    // bad
+    // bad👎👎👎
     ['get', 'post', 'put'].map((httpMethod) => Object.prototype.hasOwnProperty.call(
         httpMagicObjectWithAVeryLongName,
         httpMethod,
       )
     );
 
-    // good
+    // good👍👍👍
     ['get', 'post', 'put'].map((httpMethod) => (
       Object.prototype.hasOwnProperty.call(
         httpMagicObjectWithAVeryLongName,
@@ -1047,34 +1048,34 @@ Other Style Guides
     ```
 
   <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-  - [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency. eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
+  - [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency.在参数周围包含parentheses为了清晰度与持续性 eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
 
-    > Why? Minimizes diff churn when adding or removing arguments.
+    > Why? Minimizes diff churn when adding or removing arguments.最小化差异流失当添加或移除参数
 
     ```javascript
-    // bad
+    // bad👎👎👎
     [1, 2, 3].map(x => x * x);
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((x) => x * x);
 
-    // bad
+    // bad👎👎👎
     [1, 2, 3].map(number => (
       `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
     ));
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((number) => (
       `A long string with the ${number}. It’s so long that we don’t want it to take up space on the .map line!`
     ));
 
-    // bad
+    // bad👎👎👎
     [1, 2, 3].map(x => {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
@@ -1082,19 +1083,19 @@ Other Style Guides
     ```
 
   <a name="arrows--confusing"></a><a name="8.5"></a>
-  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
+  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`).避免混淆箭头函数句法(`=>`) eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const itemHeight = (item) => item.height <= 256 ? item.largeSize : item.smallSize;
 
-    // bad
+    // bad👎👎👎
     const itemHeight = (item) => item.height >= 256 ? item.largeSize : item.smallSize;
 
-    // good
+    // good👍👍👍
     const itemHeight = (item) => (item.height <= 256 ? item.largeSize : item.smallSize);
 
-    // good
+    // good👍👍👍
     const itemHeight = (item) => {
       const { height, largeSize, smallSize } = item;
       return height <= 256 ? largeSize : smallSize;
