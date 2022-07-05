@@ -22,8 +22,8 @@ Other Style Guides
 
   1. [Types](#types) 类型
   1. [References](#references) 引用
-  1. [Objects](#objects) 对象
-  1. [Arrays](#arrays) 阵列
+  1. [Objects](#objects) 
+  1. [Arrays](#arrays) 
   1. [Destructuring](#destructuring) 
   1. [Strings](#strings) 字符串
   1. [Functions](#functions) 函数
@@ -105,9 +105,9 @@ Other Style Guides
 ## References
 
   <a name="references--prefer-const"></a><a name="2.1"></a>
-  - [2.1](#references--prefer-const) Use `const` for all of your references; avoid using `var`. eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
+  - [2.1](#references--prefer-const) Use `const` for all of your references;对所有的引用统一使用`const` avoid using `var`.避免使用`var` eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign)
 
-    > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code. 对于不会重新赋值的引用
+    > Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code. 对于不会重新赋值的引用，会导致bugs&很难理解代码
 
     ```javascript
     // bad👎👎👎
@@ -120,9 +120,9 @@ Other Style Guides
     ```
 
   <a name="references--disallow-var"></a><a name="2.2"></a>
-  - [2.2](#references--disallow-var) If you must reassign references, use `let` instead of `var`. eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
+  - [2.2](#references--disallow-var) If you must reassign references,如果一定需要重新对引用赋值 use `let` instead of `var`.使用`let`而不是`var` eslint: [`no-var`](https://eslint.org/docs/rules/no-var)
 
-    > Why? `let` is block-scoped rather than function-scoped like `var`.
+    > Why? `let` is block-scoped rather than function-scoped like `var`.`let`是块-范围，而不像`var`是函数-范围
 
     ```javascript
     // bad👎👎👎
@@ -131,7 +131,7 @@ Other Style Guides
       count += 1;
     }
 
-    // good, use the let.
+    // good, use the let.👍👍👍
     let count = 1;
     if (true) {
       count += 1;
@@ -142,7 +142,7 @@ Other Style Guides
   - [2.3](#references--block-scope) Note that both `let` and `const` are block-scoped,区块范围 whereas `var` is function-scoped.函数范围
 
     ```javascript
-    // const and let only exist in the blocks they are defined in. const & let只存在定义的blocks中
+    // const and let only exist in the blocks they are defined in. const & let只存在他们定义的blocks中
     {
       let a = 1;
       const b = 1;
@@ -153,7 +153,7 @@ Other Style Guides
     console.log(c); // Prints 1
     ```
 
-    In the above code, you can see that referencing `a` and `b` will produce a ReferenceError,参照错误 while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
+    In the above code, you can see that referencing `a` and `b` will produce a ReferenceError,引用`a`& `b`会产生参照错误 while `c` contains the number. This is because `a` and `b` are block scoped, while `c` is scoped to the containing function.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -202,22 +202,22 @@ Other Style Guides
 
     ```javascript
     // 不简洁写法！ES5 syntax👇
-    // Properties
+    // Properties 属性
     var foo = {
       x = x,
       y = y,
       z = z,
     };
-    // Methods
+    // Methods 方法
     var foo = {
       a: function(){},
       b: function(){}
     };
     
     // 简洁写法，ES6 syntax👇
-    // Properties
+    // Properties 属性
     var foo = {x, y, z};
-    // methods
+    // methods 方法
     var foo = {
     a() {},
     b() {}
@@ -316,18 +316,18 @@ Other Style Guides
     ```
 
   <a name="objects--prototype-builtins"></a>
-  - [3.7](#objects--prototype-builtins) Do not call `Object.prototype` methods directly, such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
+  - [3.7](#objects--prototype-builtins) Do not call `Object.prototype` methods directly,不要直接call`Object.prototype` such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
 
-    > Why? These methods may be shadowed by properties on the object in question - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`).
+    > Why? These methods may be shadowed by properties on the object in question - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`).这个对象可能是一个null对象
 
     ```javascript
-    // bad
+    // bad👎👎👎
     console.log(object.hasOwnProperty(key));
 
-    // good
+    // good👍👍👍
     console.log(Object.prototype.hasOwnProperty.call(object, key));
 
-    // best
+    // best👍👍👍👍
     const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
     console.log(has.call(object, key));
     /* or */
@@ -336,19 +336,19 @@ Other Style Guides
     ```
 
   <a name="objects--rest-spread"></a>
-  - [3.8](#objects--rest-spread) Prefer the object spread syntax over [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) to shallow-copy objects. Use the object rest parameter syntax to get a new object with certain properties omitted. eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
+  - [3.8](#objects--rest-spread) Prefer the object spread syntax over首选对象传播语法 [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) to shallow-copy objects.浅层-复制对象 Use the object rest parameter syntax对象重置参数语法 to get a new object with certain properties omitted.获取省略了某些属性的新对象 eslint: [`prefer-object-spread`](https://eslint.org/docs/rules/prefer-object-spread)
 
     ```javascript
-    // very bad
+    // very bad👎👎👎👎
     const original = { a: 1, b: 2 };
-    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
-    delete copy.a; // so does this
+    const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ 这变异了`original`
+    delete copy.a; // so does this 
 
-    // bad
+    // bad👎👎👎
     const original = { a: 1, b: 2 };
     const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
 
-    // good
+    // good👍👍👍
     const original = { a: 1, b: 2 };
     const copy = { ...original, c: 3 }; // copy => { a: 1, b: 2, c: 3 }
 
@@ -357,37 +357,37 @@ Other Style Guides
 
 **[⬆ back to top](#table-of-contents)**
 
-## Arrays
+## Arrays阵列
 
   <a name="arrays--literals"></a><a name="4.1"></a>
-  - [4.1](#arrays--literals) Use the literal syntax for array creation. eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
+  - [4.1](#arrays--literals) Use the literal syntax for array creation.使用文字语法`[]` 生成阵列 eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const items = new Array();
 
-    // good
+    // good👍👍👍
     const items = [];
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
-  - [4.2](#arrays--push) Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
+  - [4.2](#arrays--push) Use [Array#push] (https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array. 而不是直接赋值添加物件到数列中
 
     ```javascript
     const someStack = [];
 
-    // bad
+    // bad👎👎👎
     someStack[someStack.length] = 'abracadabra';
 
-    // good
+    // good👍👍👍
     someStack.push('abracadabra');
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
-  - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays.
+  - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays. 复制数列的方法
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const len = items.length;
     const itemsCopy = [];
     let i;
@@ -396,45 +396,45 @@ Other Style Guides
       itemsCopy[i] = items[i];
     }
 
-    // good
+    // good👍👍👍
     const itemsCopy = [...items];
     ```
 
   <a name="arrays--from"></a>
   <a name="arrays--from-iterable"></a><a name="4.4"></a>
-  - [4.4](#arrays--from-iterable) To convert an iterable object to an array, use spreads `...` instead of [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
+  - [4.4](#arrays--from-iterable) To convert an iterable object to an array,转换可迭代对象到数列中 use spreads `...` instead of [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from)
 
     ```javascript
     const foo = document.querySelectorAll('.foo');
 
-    // good
+    // good👍👍👍
     const nodes = Array.from(foo);
 
-    // best
+    // best👍👍👍👍
     const nodes = [...foo];
     ```
 
   <a name="arrays--from-array-like"></a>
-  - [4.5](#arrays--from-array-like) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array.
+  - [4.5](#arrays--from-array-like) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array. 转换一个array-like 对象to一个array
 
     ```javascript
     const arrLike = { 0: 'foo', 1: 'bar', 2: 'baz', length: 3 };
 
-    // bad
+    // bad👎👎👎
     const arr = Array.prototype.slice.call(arrLike);
 
-    // good
+    // good👍👍👍
     const arr = Array.from(arrLike);
     ```
 
   <a name="arrays--mapping"></a>
-  - [4.6](#arrays--mapping) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables, because it avoids creating an intermediate array.
+  - [4.6](#arrays--mapping) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables,在可迭代对象上映射 because it avoids creating an intermediate array.避免创建一个中间阵列
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const baz = [...foo].map(bar);
 
-    // good
+    // good👍👍👍
     const baz = Array.from(foo, bar);
     ```
 
@@ -442,13 +442,13 @@ Other Style Guides
   - [4.7](#arrays--callback-return) Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following [8.2](#arrows--implicit-return). eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
 
     ```javascript
-    // good
+    // good👍👍👍
     [1, 2, 3].map((x) => {
       const y = x + 1;
       return x * y;
     });
 
-    // good
+    // good👍👍👍
     [1, 2, 3].map((x) => x + 1);
 
     // bad - no returned value means `acc` becomes undefined after the first iteration
@@ -456,13 +456,13 @@ Other Style Guides
       const flatten = acc.concat(item);
     });
 
-    // good
+    // good👍👍👍
     [[0, 1], [2, 3], [4, 5]].reduce((acc, item, index) => {
       const flatten = acc.concat(item);
       return flatten;
     });
 
-    // bad
+    // bad👎👎👎
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -472,7 +472,7 @@ Other Style Guides
       }
     });
 
-    // good
+    // good👍👍👍
     inbox.filter((msg) => {
       const { subject, author } = msg;
       if (subject === 'Mockingbird') {
@@ -484,10 +484,10 @@ Other Style Guides
     ```
 
   <a name="arrays--bracket-newline"></a>
-  - [4.8](#arrays--bracket-newline) Use line breaks after open and before close array brackets if an array has multiple lines
+  - [4.8](#arrays--bracket-newline) Use line breaks after open and before close array brackets if an array has multiple lines 如果一个数列有很多行
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const arr = [
       [0, 1], [2, 3], [4, 5],
     ];
@@ -502,7 +502,7 @@ Other Style Guides
       1, 2,
     ];
 
-    // good
+    // good👍👍👍
     const arr = [[0, 1], [2, 3], [4, 5]];
 
     const objectInArray = [
@@ -522,15 +522,15 @@ Other Style Guides
 
 **[⬆ back to top](#table-of-contents)**
 
-## Destructuring
+## Destructuring破坏
 
   <a name="destructuring--object"></a><a name="5.1"></a>
-  - [5.1](#destructuring--object) Use object destructuring when accessing and using multiple properties of an object. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+  - [5.1](#destructuring--object) Use object destructuring破坏对象 when accessing and using multiple properties of an object.访问或者使用同一个对象的多个属性 eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
 
-    > Why? Destructuring saves you from creating temporary references for those properties, and from repetitive access of the object. Repeating object access creates more repetitive code, requires more reading, and creates more opportunities for mistakes. Destructuring objects also provides a single site of definition of the object structure that is used in the block, rather than requiring reading the entire block to determine what is used.
+    > Why? Destructuring saves you from creating temporary references for those properties,为那些属性创建临时引用 and from repetitive access of the object.对对象的重复访问 Repeating object access creates more repetitive code,重复地访问对象会产生更多重复的代码 requires more reading, and creates more opportunities for mistakes.需要更多的阅读更多产生错误的机会 Destructuring objects also provides a single site of definition of the object structure that is used in the block,破坏对象同时提供一个在块里的单一site的definition的对象破坏 rather than requiring reading the entire block to determine what is used.而不是要求去读整个block来定义它是如何被使用的
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function getFullName(user) {
       const firstName = user.firstName;
       const lastName = user.lastName;
@@ -538,39 +538,39 @@ Other Style Guides
       return `${firstName} ${lastName}`;
     }
 
-    // good
+    // good👍👍👍
     function getFullName(user) {
       const { firstName, lastName } = user;
       return `${firstName} ${lastName}`;
     }
 
-    // best
+    // best👍👍👍👍
     function getFullName({ firstName, lastName }) {
       return `${firstName} ${lastName}`;
     }
     ```
 
   <a name="destructuring--array"></a><a name="5.2"></a>
-  - [5.2](#destructuring--array) Use array destructuring. eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
+  - [5.2](#destructuring--array) Use array destructuring.使用阵列破坏 eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
 
     ```javascript
     const arr = [1, 2, 3, 4];
 
-    // bad
+    // bad👎👎👎
     const first = arr[0];
     const second = arr[1];
 
-    // good
+    // good👍👍👍
     const [first, second] = arr;
     ```
 
   <a name="destructuring--object-over-array"></a><a name="5.3"></a>
-  - [5.3](#destructuring--object-over-array) Use object destructuring for multiple return values, not array destructuring.
+  - [5.3](#destructuring--object-over-array) Use object destructuring for multiple return values,对多个回传的数值使用对象破坏 not array destructuring.而不是阵列的破坏
 
-    > Why? You can add new properties over time or change the order of things without breaking call sites.
+    > Why? You can add new properties over time or change the order of things without breaking call sites.为什么？可以添加新的属性或者改变某物的顺序而不破坏call sites
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function processInput(input) {
       // then a miracle occurs
       return [left, right, top, bottom];
@@ -579,7 +579,7 @@ Other Style Guides
     // the caller needs to think about the order of return data
     const [left, __, top] = processInput(input);
 
-    // good
+    // good👍👍👍
     function processInput(input) {
       // then a miracle occurs
       return { left, right, top, bottom };
@@ -594,69 +594,69 @@ Other Style Guides
 ## Strings
 
   <a name="strings--quotes"></a><a name="6.1"></a>
-  - [6.1](#strings--quotes) Use single quotes `''` for strings. eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
+  - [6.1](#strings--quotes) Use single quotes `''` for strings.对数组使用`''`  eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const name = "Capt. Janeway";
 
-    // bad - template literals should contain interpolation or newlines
+    // bad - template literals should contain interpolation or newlines模版字符串(temporal literals)需要包含插值或者换行
     const name = `Capt. Janeway`;
 
-    // good
+    // good👍👍👍
     const name = 'Capt. Janeway';
     ```
 
   <a name="strings--line-length"></a><a name="6.2"></a>
-  - [6.2](#strings--line-length) Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation.
+  - [6.2](#strings--line-length) Strings that cause the line to go over 100 characters should not be written across multiple lines using string concatenation. 字符串导致line超过100characters不应该使用字符串超过多行
 
-    > Why? Broken strings are painful to work with and make code less searchable.
+    > Why? Broken strings are painful to work with and make code less searchable.字符串断点are painful to work with and 让代码更不可搜索🔍
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const errorMessage = 'This is a super long error that was thrown because \
     of Batman. When you stop to think about how Batman had anything to do \
     with this, you would get nowhere \
     fast.';
 
-    // bad
+    // bad👎👎👎
     const errorMessage = 'This is a super long error that was thrown because ' +
       'of Batman. When you stop to think about how Batman had anything to do ' +
       'with this, you would get nowhere fast.';
 
-    // good
+    // good👍👍👍
     const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
     ```
 
   <a name="es6-template-literals"></a><a name="6.4"></a>
   - [6.3](#es6-template-literals) When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
 
-    > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
+    > Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.模版字符串提供可读，准确语法字符串插值功能
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function sayHi(name) {
       return 'How are you, ' + name + '?';
     }
 
-    // bad
+    // bad👎👎👎
     function sayHi(name) {
       return ['How are you, ', name, '?'].join();
     }
 
-    // bad
+    // bad👎👎👎
     function sayHi(name) {
       return `How are you, ${ name }?`;
     }
 
-    // good
+    // good👍👍👍
     function sayHi(name) {
       return `How are you, ${name}?`;
     }
     ```
 
   <a name="strings--eval"></a><a name="6.5"></a>
-  - [6.4](#strings--eval) Never use `eval()` on a string, it opens too many vulnerabilities. eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
+  - [6.4](#strings--eval) Never use `eval()` on a string, it opens too many vulnerabilities.不要在字符串中使用`eval()`导致很多漏洞，因为`eval()`function evaluate javascript code represented as a string eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
 
   <a name="strings--escaping"></a>
   - [6.5](#strings--escaping) Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
@@ -922,17 +922,17 @@ Other Style Guides
     ```
 
   <a name="functions--signature-invocation-indentation"></a>
-  - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
+  - [7.15](#functions--signature-invocation-indentation) Functions with multiline signatures, or invocations,或者调用 should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item. eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function foo(bar,
                  baz,
                  quux) {
       // ...
     }
 
-    // good
+    // good👍👍👍
     function foo(
       bar,
       baz,
@@ -941,12 +941,12 @@ Other Style Guides
       // ...
     }
 
-    // bad
+    // bad👎👎👎
     console.log(foo,
       bar,
       baz);
 
-    // good
+    // good👍👍👍
     console.log(
       foo,
       bar,
