@@ -1,30 +1,30 @@
-# Airbnb CSS-in-JavaScript Style Guide
+# Airbnb CSS-in-JavaScript Style Guide CSS-in-JavaScript
 
-*A mostly reasonable approach to CSS-in-JavaScript*
+*A mostly reasonable approach to CSS-in-JavaScript* 
 
-## Table of Contents
+## Table of Contents 目录
 
-1. [Naming](#naming)
-1. [Ordering](#ordering)
-1. [Nesting](#nesting)
-1. [Inline](#inline)
-1. [Themes](#themes)
+1. [Naming](#naming) 命名方式
+1. [Ordering](#ordering) 顺序
+1. [Nesting](#nesting) 嵌套
+1. [Inline](#inline) 内嵌
+1. [Themes](#themes) 主题
 
-## Naming
+## Naming 命名方式
 
-  - Use camelCase for object keys (i.e. "selectors").
+  - Use camelCase for object keys对象键 (i.e. "selectors").
 
-    > Why? We access these keys as properties on the `styles` object in the component, so it is most convenient to use camelCase.
+    > Why? We access these keys as properties on the `styles` object in the component,在组件的风格对象中的`styles`我们通过访问这些键作为属性 so it is most convenient to use camelCase.
 
     ```js
-    // bad
+    // bad👎👎👎
     {
       'bermuda-triangle': {
         display: 'none',
       },
     }
 
-    // good
+    // good👍👍👍
     {
       bermudaTriangle: {
         display: 'none',
