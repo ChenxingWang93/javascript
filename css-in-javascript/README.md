@@ -193,7 +193,7 @@
       },
     }))(MyComponent);
     ```
-
+**[⬆ back to top](#table-of-contents)**
 ## Nesting
 
   - Leave a blank line between adjacent blocks at the same indentation level.
@@ -229,7 +229,7 @@
       },
     }
     ```
-
+**[⬆ back to top](#table-of-contents)**
 ## Inline
 
   - Use inline styles for styles that have a high cardinality (e.g. uses the value of a prop) and not for styles that have a low cardinality.
@@ -256,7 +256,7 @@
       },
     }))(MyComponent);
     ```
-
+**[⬆ back to top](#table-of-contents)**
 ## Themes
 
   - Use an abstraction layer such as [react-with-styles](https://github.com/airbnb/react-with-styles) that enables theming. *react-with-styles gives us things like `withStyles()`, `ThemedStyleSheet`, and `css()` which are used in some of the examples in this document.*
