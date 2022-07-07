@@ -318,7 +318,7 @@ Other Style Guides
   <a name="objects--prototype-builtins"></a>
   - [3.7](#objects--prototype-builtins) Do not call `Object.prototype` methods directly,不要直接call`Object.prototype` such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`. eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
 
-    > Why? These methods may be shadowed by properties on the object in question - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`).这个对象可能是一个null对象
+    > Why? These methods may be shadowed by properties on the object in question这些方法可能被相关对象的属性遮蔽 - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`).或者，这个对象可能是一个null对象
 
     ```javascript
     // bad👎👎👎
@@ -371,7 +371,7 @@ Other Style Guides
     ```
 
   <a name="arrays--push"></a><a name="4.2"></a>
-  - [4.2](#arrays--push) Use [Array#push] (https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array. 而不是直接赋值添加物件到数列中
+  - [4.2](#arrays--push) Use [Array#push] (https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push)使用[Array#push] instead of direct assignment to add items to an array. 而不是直接赋值添加物件到数列中
 
     ```javascript
     const someStack = [];
@@ -384,7 +384,7 @@ Other Style Guides
     ```
 
   <a name="es6-array-spreads"></a><a name="4.3"></a>
-  - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays. 复制数列的方法
+  - [4.3](#es6-array-spreads) Use array spreads `...` to copy arrays. 使用数列传播`...`复制数列的方法
 
     ```javascript
     // bad👎👎👎
@@ -414,7 +414,7 @@ Other Style Guides
     const nodes = [...foo];
     ```
 
-  <a name="arrays--from-array-like"></a>
+  <a name="arrays--from-array-like"></a> 从array-like 到arrays
   - [4.5](#arrays--from-array-like) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array. 转换一个array-like 对象to一个array
 
     ```javascript
@@ -427,7 +427,7 @@ Other Style Guides
     const arr = Array.from(arrLike);
     ```
 
-  <a name="arrays--mapping"></a>
+  <a name="arrays--mapping"></a> 阵列的映射
   - [4.6](#arrays--mapping) Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables,在可迭代对象上映射 because it avoids creating an intermediate array.避免创建一个中间阵列
 
     ```javascript
@@ -483,9 +483,9 @@ Other Style Guides
     });
     ```
 
-  <a name="arrays--bracket-newline"></a>
-  - [4.8](#arrays--bracket-newline) Use line breaks after open and before close array brackets if an array has multiple lines 如果一个数列有很多行
-
+  <a name="arrays--bracket-newline"></a> 数组新的一行
+  - [4.8](#arrays--bracket-newline) Use line breaks after open and before close array brackets if an array has multiple lines 如果一个数组有很多行
+  
     ```javascript
     // bad👎👎👎
     const arr = [
@@ -591,7 +591,7 @@ Other Style Guides
 
 **[⬆ back to top](#table-of-contents)**
 
-## Strings
+## Strings字符串
 
   <a name="strings--quotes"></a><a name="6.1"></a>
   - [6.1](#strings--quotes) Use single quotes `''` for strings.对数组使用`''`  eslint: [`quotes`](https://eslint.org/docs/rules/quotes)
@@ -1047,8 +1047,8 @@ Other Style Guides
     ));
     ```
 
-  <a name="arrows--one-arg-parens"></a><a name="8.4"></a>
-  - [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency.在参数周围包含parentheses为了清晰度与持续性 eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
+  <a name="arrows--one-arg-parens"></a><a name="8.4"></a>箭头函数--一个--arg-
+  - [8.4](#arrows--one-arg-parens) Always include parentheses around arguments for clarity and consistency.在参数周围包含`()`为了清晰度与持续性 eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens)
 
     > Why? Minimizes diff churn when adding or removing arguments.最小化差异流失当添加或移除参数
 
@@ -1082,8 +1082,8 @@ Other Style Guides
     });
     ```
 
-  <a name="arrows--confusing"></a><a name="8.5"></a>
-  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`).避免混淆箭头函数句法(`=>`) eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
+  <a name="arrows--confusing"></a><a name="8.5"></a>箭头--混淆
+  - [8.5](#arrows--confusing) Avoid confusing arrow function syntax避免混淆箭头函数句法与比较句法 (`=>`) with comparison operators (`<=`, `>=`).(`=>`) eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
 
     ```javascript
     // bad👎👎👎
@@ -1102,18 +1102,18 @@ Other Style Guides
     };
     ```
 
-  <a name="whitespace--implicit-arrow-linebreak"></a>
-  - [8.6](#whitespace--implicit-arrow-linebreak) Enforce the location of arrow function bodies with implicit returns. eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
+  <a name="whitespace--implicit-arrow-linebreak"></a>空白--含蓄-箭头函数-换行
+  - [8.6](#whitespace--implicit-arrow-linebreak) Enforce the location of arrow function bodies with implicit returns.使用隐式返回强制实施箭头函数体的地址 eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     (foo) =>
       bar;
 
     (foo) =>
       (bar);
 
-    // good
+    // good👍👍👍
     (foo) => bar;
     (foo) => (bar);
     (foo) => (
@@ -1123,15 +1123,15 @@ Other Style Guides
 
 **[⬆ back to top](#table-of-contents)**
 
-## Classes & Constructors
+## Classes & Constructors类型&构造器
 
-  <a name="constructors--use-class"></a><a name="9.1"></a>
-  - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.
+  <a name="constructors--use-class"></a><a name="9.1"></a> 构造器--使用-类
+  - [9.1](#constructors--use-class) Always use `class`. Avoid manipulating `prototype` directly.永远使用`class`.避免直接操作`prototype`
 
-    > Why? `class` syntax is more concise and easier to reason about.
+    > Why? `class` syntax is more concise and easier to reason about.`class`语句更准确且容易归因
 
     ```javascript
-    // bad
+    // bad👎👎👎
     function Queue(contents = []) {
       this.queue = [...contents];
     }
@@ -1141,7 +1141,7 @@ Other Style Guides
       return value;
     };
 
-    // good
+    // good👍👍👍
     class Queue {
       constructor(contents = []) {
         this.queue = [...contents];
@@ -1154,13 +1154,13 @@ Other Style Guides
     }
     ```
 
-  <a name="constructors--extends"></a><a name="9.2"></a>
-  - [9.2](#constructors--extends) Use `extends` for inheritance.
+  <a name="constructors--extends"></a><a name="9.2"></a>构造器--扩建
+  - [9.2](#constructors--extends) Use `extends` for inheritance.使用`extends`做继承
 
-    > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
+    > Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.内建方式继承原型功能且不破坏`instanceof`
 
     ```javascript
-    // bad
+    // bad👎👎👎
     const inherits = require('inherits');
     function PeekableQueue(contents) {
       Queue.apply(this, contents);
@@ -1170,7 +1170,7 @@ Other Style Guides
       return this.queue[0];
     };
 
-    // good
+    // good👍👍👍
     class PeekableQueue extends Queue {
       peek() {
         return this.queue[0];
@@ -1178,11 +1178,11 @@ Other Style Guides
     }
     ```
 
-  <a name="constructors--chaining"></a><a name="9.3"></a>
-  - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.
+  <a name="constructors--chaining"></a><a name="9.3"></a>构造器--链
+  - [9.3](#constructors--chaining) Methods can return `this` to help with method chaining.方法会回传`this`助于方法链
 
     ```javascript
-    // bad
+    // bad👎👎👎
     Jedi.prototype.jump = function () {
       this.jumping = true;
       return true;
@@ -1196,7 +1196,7 @@ Other Style Guides
     luke.jump(); // => true
     luke.setHeight(20); // => undefined
 
-    // good
+    // good👍👍👍
     class Jedi {
       jump() {
         this.jumping = true;
@@ -1215,8 +1215,9 @@ Other Style Guides
       .setHeight(20);
     ```
 
-  <a name="constructors--tostring"></a><a name="9.4"></a>
+  <a name="constructors--tostring"></a><a name="9.4"></a>构造--牙绳
   - [9.4](#constructors--tostring) It’s okay to write a custom `toString()` method, just make sure it works successfully and causes no side effects.
+  习惯性地写一个`toString()`确保工作成功不会造成副作用
 
     ```javascript
     class Jedi {
@@ -1238,7 +1239,7 @@ Other Style Guides
   - [9.5](#constructors--no-useless) Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary. eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
 
     ```javascript
-    // bad
+    // bad👎👎👎
     class Jedi {
       constructor() {}
 
@@ -1247,14 +1248,14 @@ Other Style Guides
       }
     }
 
-    // bad
+    // bad👎👎👎
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
       }
     }
 
-    // good
+    // good👍👍👍
     class Rey extends Jedi {
       constructor(...args) {
         super(...args);
