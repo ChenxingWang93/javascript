@@ -32,13 +32,14 @@
     }
     ```
 
-  - Use an underscore for modifiers to other styles.
+  - Use an underscore for modifiers to other styles.使用`_`作为到其他样式的修饰符
 
-    > Why? Similar to BEM, this naming convention makes it clear that the styles are intended to modify the element preceded by the underscore. Underscores do not need to be quoted, so they are preferred over other characters, such as dashes.
+    > Why? Similar to BEM,[`BEM`](https://github.com/getbem/getbem.com) this naming convention makes it clear that the styles are intended to modify the element preceded by the underscore. Underscores do not need to be quoted, so they are preferred over other characters, such as dashes.
+    
 
     ```js
-    // bad
-    {
+    // bad👎👎👎
+    
       bruceBanner: {
         color: 'pink',
         transition: 'color 10s',
@@ -49,7 +50,7 @@
       },
     }
 
-    // good
+    // good👍👍👍
     {
       bruceBanner: {
         color: 'pink',
@@ -67,7 +68,7 @@
     > Why? Similar to modifiers, keeping the naming consistent helps reveal the relationship of these styles to the styles that override them in more adequate browsers.
 
     ```js
-    // bad
+    // bad👎👎👎
     {
       muscles: {
         display: 'flex',
@@ -78,7 +79,7 @@
       },
     }
 
-    // good
+    // good👍👍👍
     {
       muscles: {
         display: 'flex',
@@ -92,10 +93,10 @@
 
   - Use a separate selector for sets of fallback styles.
 
-    > Why? Keeping fallback styles contained in a separate object clarifies their purpose, which improves readability.
+    > Why? Keeping fallback styles contained in a separate object clarifies their purpose, which improves readability.提高可读性
 
     ```js
-    // bad
+    // bad👎👎👎
     {
       muscles: {
         display: 'flex',
@@ -111,7 +112,7 @@
       },
     }
 
-    // good
+    // good👍👍👍
     {
       muscles: {
         display: 'flex',
@@ -136,14 +137,14 @@
     > Why? Commonly used names like "phone", "tablet", and "desktop" do not match the characteristics of the devices in the real world. Using these names sets the wrong expectations.
 
     ```js
-    // bad
+    // bad👎👎👎
     const breakpoints = {
       mobile: '@media (max-width: 639px)',
       tablet: '@media (max-width: 1047px)',
       desktop: '@media (min-width: 1048px)',
     };
 
-    // good
+    // good👍👍👍
     const breakpoints = {
       small: '@media (max-width: 639px)',
       medium: '@media (max-width: 1047px)',
@@ -193,7 +194,7 @@
       },
     }))(MyComponent);
     ```
-
+**[⬆ back to top](#table-of-contents)**
 ## Nesting
 
   - Leave a blank line between adjacent blocks at the same indentation level.
@@ -229,7 +230,7 @@
       },
     }
     ```
-
+**[⬆ back to top](#table-of-contents)**
 ## Inline
 
   - Use inline styles for styles that have a high cardinality (e.g. uses the value of a prop) and not for styles that have a low cardinality.
@@ -256,7 +257,7 @@
       },
     }))(MyComponent);
     ```
-
+**[⬆ back to top](#table-of-contents)**
 ## Themes
 
   - Use an abstraction layer such as [react-with-styles](https://github.com/airbnb/react-with-styles) that enables theming. *react-with-styles gives us things like `withStyles()`, `ThemedStyleSheet`, and `css()` which are used in some of the examples in this document.*
