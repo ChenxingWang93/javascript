@@ -22,7 +22,7 @@ This style guide is mostly based on the standards that are currently prevalent i
   1. [Ordering](#ordering)
   1. [`isMounted`](#ismounted)
 
-## Basic Rules
+## Basic Rules 基本规则
 
   - Only include one React component per file.
     - However, multiple [Stateless, or Pure, Components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) are allowed per file. eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
@@ -30,12 +30,13 @@ This style guide is mostly based on the standards that are currently prevalent i
   - Do not use `React.createElement` unless you’re initializing the app from a file that is not JSX.
   - [`react/forbid-prop-types`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/forbid-prop-types.md) will allow `arrays` and `objects` only if it is explicitly noted what `array` and `object` contains, using `arrayOf`, `objectOf`, or `shape`.
 
-## Class vs `React.createClass` vs stateless
+## Class vs `React.createClass` vs stateless 类 vs 
 
   - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass`. eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
+如果有内部 状态 或者 参考s 
 
     ```jsx
-    // bad
+    // bad 👎👎👎
     const Listing = React.createClass({
       // ...
       render() {
@@ -43,7 +44,7 @@ This style guide is mostly based on the standards that are currently prevalent i
       }
     });
 
-    // good
+    // good 👌👌👌
     class Listing extends React.Component {
       // ...
       render() {
@@ -55,19 +56,19 @@ This style guide is mostly based on the standards that are currently prevalent i
     And if you don’t have state or refs, prefer normal functions (not arrow functions) over classes:
 
     ```jsx
-    // bad
+    // bad 👎👎👎
     class Listing extends React.Component {
       render() {
         return <div>{this.props.hello}</div>;
       }
     }
 
-    // bad (relying on function name inference is discouraged)
+    // bad (relying on function name inference is discouraged) 依赖
     const Listing = ({ hello }) => (
       <div>{hello}</div>
     );
 
-    // good
+    // good 👌👌👌
     function Listing({ hello }) {
       return <div>{hello}</div>;
     }
